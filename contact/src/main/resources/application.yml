@@ -1,0 +1,45 @@
+server:
+  port: 5000
+spring:
+  application:
+    name: contact
+  datasource:
+    url: jdbc:mysql://119.45.47.147:3306/ysh?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai
+    username: root
+    password: Ysh0113.
+    druid:
+      initial-size: 5 #连接池初始化大小
+      min-idle: 10 #最小空闲连接数
+      max-active: 20 #最大连接数
+      web-stat-filter:
+        exclusions: "*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*" #不统计这些请求数据
+      stat-view-servlet: #访问监控网页的登录用户名和密码
+        login-username: druid
+        login-password: druid
+
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+
+feign:
+  client:
+    config:
+      default:
+        ## 设置超时时间
+        readTimeout: 5000
+        connectTimeout: 5000
+        loggerLevel: full
+  hystrix:
+    enabled: true
+
+logging:
+  level:
+    com.yishenheng: debug
+mybatis-plus:
+  mapper-locations: classpath*:/mappers/*Mapper.xml
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'

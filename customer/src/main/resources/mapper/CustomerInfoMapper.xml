@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yishenheng.customer.mapper.CustomerInfoMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.yishenheng.common.entity.CustomerInfo">
+        <id column="id" property="id" />
+        <result column="name" property="name" />
+        <result column="group_id" property="groupId" />
+        <result column="director" property="director" />
+        <result column="level" property="level" />
+        <result column="type" property="type" />
+        <result column="regTime" property="regTime" />
+        <result column="assets" property="assets" />
+        <result column="legal_person" property="legalPerson" />
+        <result column="office_location" property="officeLocation" />
+        <result column="create_time" property="createTime" />
+        <result column="update_time" property="updateTime" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, name, group_id, director, level, type, regTime, assets, legal_person, office_location, create_time, update_time
+    </sql>
+
+</mapper>

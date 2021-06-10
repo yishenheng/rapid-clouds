@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.yishenheng</groupId>
+    <artifactId>rapid-clouds</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <modules>
+        <module>customer</module>
+        <module>common</module>
+        <module>contact</module>
+        <module>gateway</module>
+        <module>generate</module>
+    </modules>
+    <packaging>pom</packaging>
+
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.3.0.RELEASE</version>
+        <relativePath/>
+    </parent>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <java.version>1.8</java.version>
+
+        <spring.cloud.version>Hoxton.SR9</spring.cloud.version>
+        <spring.cloud.alibaba.version>2.1.0.RELEASE</spring.cloud.alibaba.version>
+        <hutool.version>5.4.0</hutool.version>
+        <knife4j.version>2.0.4</knife4j.version>
+        <lombok>1.18.16</lombok>
+        <mysql-connector.version>8.0.20</mysql-connector.version>
+        <project.lombok>1.18.10</project.lombok>
+        <project.mybatis.plus>3.4.0</project.mybatis.plus>
+        <project.druid.spring.boot.starter>1.1.23</project.druid.spring.boot.starter>
+        <project.knife4j.spring.boot.starter>2.0.2</project.knife4j.spring.boot.starter>
+        <project.velocity.engine.core>2.1</project.velocity.engine.core>
+    </properties>
+
+    <!-- 顶级pom确认好版本等级 -->
+    <dependencyManagement>
+        <dependencies>
+            <!-- spring-cloud start -->
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring.cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+                <dependency>
+                    <groupId>com.alibaba.cloud</groupId>
+                    <artifactId>spring-cloud-alibaba-dependencies</artifactId>
+                    <version>${spring.cloud.alibaba.version}</version>
+                    <type>pom</type>
+                    <scope>import</scope>
+                </dependency>
+
+            <!-- mysql -->
+            <dependency>
+                <groupId>mysql</groupId>
+                <artifactId>mysql-connector-java</artifactId>
+                <version>${mysql-connector.version}</version>
+            </dependency>
+
+            <!--mybatis-plus 和 自动生成代码 start-->
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus</artifactId>
+                <version>${project.mybatis.plus}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-boot-starter</artifactId>
+                <version>${project.mybatis.plus}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.velocity</groupId>
+                <artifactId>velocity-engine-core</artifactId>
+                <version>${project.velocity.engine.core}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-generator</artifactId>
+                <version>${project.mybatis.plus}</version>
+            </dependency>
+            <!--mybatis-plus end-->
+
+            <!-- druid start-->
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>druid-spring-boot-starter</artifactId>
+                <version>${project.druid.spring.boot.starter}</version>
+            </dependency>
+            <!-- druid end-->
+
+            <!-- 接口文档ui -->
+            <dependency>
+                <groupId>com.github.xiaoymin</groupId>
+                <artifactId>knife4j-spring-boot-starter</artifactId>
+                <version>${project.knife4j.spring.boot.starter}</version>
+            </dependency>
+
+        </dependencies>
+    </dependencyManagement>
+
+
+    <!-- 通用依赖 -->
+    <dependencies>
+        <!--服务健康检查start-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+        <!-- 服务健康检查end -->
+
+        <!-- 统一工具类start -->
+        <dependency>
+            <groupId>cn.hutool</groupId>
+            <artifactId>hutool-all</artifactId>
+            <version>${hutool.version}</version>
+        </dependency>
+        <!-- 统一工具类end -->
+
+        <!-- lombok start -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${lombok}</version>
+        </dependency>
+        <!-- lombok end -->
+    </dependencies>
+</project>
