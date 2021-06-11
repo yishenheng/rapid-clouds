@@ -44,3 +44,11 @@ https://spring.io/projects/spring-cloud
 | Maven | 3.3.9  | https://maven.apache.org/                                    |
 | Mysql | 8      | https://www.mysql.com/                                       |
 
+
+
+
+# 爬坑记录：
+全局异常没有生效：
+```markdown
+1、使用@ControllerAdvice作为全局异常处理的时候，因为我的@ControllerAdvice放在了common包中，业务代码在其他的包中，所以导致没有被Spring容器注入进去。只需要在业务代码中的SpringBootAppliance手动扫描@ControllerAdvice的包即可
+``` 

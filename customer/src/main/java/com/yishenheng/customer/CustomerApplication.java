@@ -11,7 +11,7 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
  * @author yishenheng
  * @date 6/9/21 10:07 PM
  */
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages = "com.yishenheng")
 @Slf4j
 @EnableDiscoveryClient
 @MapperScan("com.yishenheng.customer.mapper")
