@@ -8,7 +8,7 @@ import com.yishenheng.contact.service.ContactInfoService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -32,10 +32,10 @@ public class ContactInfoController extends BaseController {
         this.contactInfoService = contactInfoService;
     }
 
-    @GetMapping("/")
+    @PostMapping("/")
     @ApiOperation(value = "保存联系人")
     public ResultData save(ContactInfoDTO saveParam){
-        this.contactInfoService.save(saveParam);
+        this.contactInfoService.saveContactInfo(saveParam);
         return ok();
     }
 

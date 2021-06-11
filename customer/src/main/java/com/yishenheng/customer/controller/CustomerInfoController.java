@@ -48,5 +48,11 @@ public class CustomerInfoController extends BaseController{
     public ResultData queryPage(@PathVariable @ApiParam(name = "current",value = "当前页") Integer current, @PathVariable @ApiParam(name = "size",value = "每页显示的条数") Integer size){
         return ok(this.customerInfoService.lambdaQuery().page(new Page<>(current,size)));
     }
+
+    @GetMapping("/queryCustomerIds")
+    @ApiOperation(value = "查询所有的客户Id")
+    public ResultData queryCustomerIds(){
+        return ok(this.customerInfoService.queryIds());
+    }
 }
 

@@ -50,4 +50,8 @@ public class ResultData<T> {
     public static ResultData ok() {
         return new ResultData();
     }
+
+    public static ResultData error(String msg) {
+        return new ResultData(ResultCode.FAIL.getCode(),msg);
+    }
 }
