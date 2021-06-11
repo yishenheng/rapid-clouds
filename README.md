@@ -20,7 +20,7 @@ https://spring.io/projects/spring-cloud
 | SpringCloud        | Hoxton.SR9    | 微服务框架                                           | [ https://spring.io/projects/spring-cloud](https://spring.io/projects/spring-cloud) |
 | Consul             | Hoxton.SR9    | CP类型的服务注册中心                                 | https://spring.io/projects/spring-cloud-consul               |
 | OpenFeign+Ribbon   | Hoxton.SR9    | 服务之间的负载均衡通讯                               | https://spring.io/projects/spring-cloud-openfeign            |
-| Hystix             | Hoxton.SR9    | 服务提供容错机制，保护服务的安全                     | https://github.com/Netflix/Hystrix                           |
+| Hystrix             | Hoxton.SR9    | 服务提供容错机制，保护服务的安全                     | https://github.com/Netflix/Hystrix                           |
 | Gateway            | Hoxton.SR9    | 提供统一入口，负责路由转发、断言、过滤器等           | https://spring.io/projects/spring-cloud-gateway              |
 | Hutool             | 5.4.0         | 统一工具类                                           | https://hutool.cn/docs/#/                                    |
 | SpringCloudAlibaba | 2.1.0.RELEASE | 国产的微服务框架                                     | https://spring.io/projects/spring-cloud-alibaba              |
@@ -50,5 +50,13 @@ https://spring.io/projects/spring-cloud
 # 爬坑记录：
 全局异常没有生效：
 ```markdown
-1、使用@ControllerAdvice作为全局异常处理的时候，因为我的@ControllerAdvice放在了common包中，业务代码在其他的包中，所以导致没有被Spring容器注入进去。只需要在业务代码中的SpringBootAppliance手动扫描@ControllerAdvice的包即可
+使用@ControllerAdvice作为全局异常处理的时候，因为我的@ControllerAdvice放在了common包中，业务代码在其他的包中。
+
+所以导致没有被Spring容器注入进去。只需要在业务代码中的SpringBootAppliance手动扫描@ControllerAdvice的包即可
 ``` 
+OpenFeign整合Hystrix时报错Ambiguous mapping
+```markdown
+使用OpenFeign的时候在类上添加@RequestMapping是没问题的，整合后hystrix后会报错Ambiguous mapping
+
+删除类上的@RequestMapping，放到方法上即可
+```
