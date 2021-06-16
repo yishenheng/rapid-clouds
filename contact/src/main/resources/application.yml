@@ -1,12 +1,8 @@
-server:
-  port: 5000
 spring:
-  application:
-    name: contact
   datasource:
-    url: jdbc:mysql://119.45.47.147:3306/ysh?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai
+    url: jdbc:mysql://127.0.0.1:3306/ysh?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai
     username: root
-    password: Ysh0113.
+    password: root
     druid:
       initial-size: 5 #连接池初始化大小
       min-idle: 10 #最小空闲连接数
@@ -16,12 +12,13 @@ spring:
       stat-view-servlet: #访问监控网页的登录用户名和密码
         login-username: druid
         login-password: druid
-
+  profiles:
+    active: dev
   cloud:
-    nacos:
-      discovery:
-        server-addr: 127.0.0.1:8848
-
+    sentinel:
+      transport:
+        port: 8719
+        dashboard: 127.0.0.1:9090
 feign:
   client:
     config:
@@ -32,7 +29,6 @@ feign:
         loggerLevel: full
   hystrix:
     enabled: true
-
 logging:
   level:
     com.yishenheng: debug

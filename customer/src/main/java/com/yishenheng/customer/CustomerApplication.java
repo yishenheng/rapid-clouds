@@ -6,6 +6,7 @@ import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 
 /**
  * @author yishenheng
@@ -15,6 +16,7 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 @Slf4j
 @EnableDiscoveryClient
 @MapperScan("com.yishenheng.customer.mapper")
+@RefreshScope
 public class CustomerApplication {
 
     public static void main(String[] args) {
